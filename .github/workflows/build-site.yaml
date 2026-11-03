@@ -17,7 +17,8 @@ permissions:
 
 jobs:
   build-site:
-    runs-on: ubuntu-latest
+    # posix-spawn 0.3.15 requires the compiler shipped with Ubuntu 24.04.
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Debug dump
