@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /preview/
 
-Sitemap: https://rnx-metaindux.github.io/sitemap.xml
+Sitemap: https://metaindux.github.io/sitemap.xml
