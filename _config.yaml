@@ -1,8 +1,8 @@
 # site properties and page defaults
-title: RNX-MetaIndux
+title: MetaIndux
 subtitle: 
-description: 北京航空航天大学任磊教授 RNX-MetaIndux 团队，研究工业大模型、工业人工智能、工业智能体、具身智能与智能制造。
-url: https://rnx-metaindux.github.io
+description: 北京航空航天大学任磊教授 MetaIndux 团队，研究工业大模型、工业人工智能、工业智能体、具身智能与智能制造。
+url: https://metaindux.github.io
 baseurl: ""
 lang: zh-CN
 locale: zh_CN
@@ -15,7 +15,7 @@ links:
   email: rnx_metaindux@163.com
   orcid: 0000-0001-8713-9213
   google-scholar: BcSIgFEAAAAJ
-  github: RNX-MetaIndux
+  github: MetaIndux
 
 ### jekyll settings
 

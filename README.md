@@ -3,7 +3,7 @@
   ![on-pull-request](../../actions/workflows/on-pull-request.yaml/badge.svg)
   ![on-schedule](../../actions/workflows/on-schedule.yaml/badge.svg)
 
-  # RNX-MetaIndux's Website
+  # MetaIndux's Website
 
   Visit **[metaindux.github.io](https://metaindux.github.io)** 🚀
 

@@ -1,7 +1,7 @@
 ---
 title: Research
 seo_title: 研究成果与学术论文
-description: 北京航空航天大学任磊教授 RNX-MetaIndux 团队的论文与研究成果，涵盖工业大模型、工业智能体、工业时序智能与智能制造。
+description: 北京航空航天大学任磊教授 MetaIndux 团队的论文与研究成果，涵盖工业大模型、工业智能体、工业时序智能与智能制造。
 nav:
   order: 1
   tooltip: Publications and research topics

@@ -108,7 +108,7 @@
   "@type": "WebPage",
   "isPartOf": { "@type": "WebSite", "name": {{ site.title | jsonify }}, "url": {{ site_url | jsonify }} },
   {% endif %}
-  "name": {{ fulltitle | jsonify }},
+  "name": {% if page.url == '/' %}{{ site.title | jsonify }}{% else %}{{ fulltitle | jsonify }}{% endif %},
   "description": {{ seo_description | jsonify }},
   "inLanguage": {{ page.lang | default: site.lang | jsonify }},
   "url": {{ canonical_url | jsonify }}

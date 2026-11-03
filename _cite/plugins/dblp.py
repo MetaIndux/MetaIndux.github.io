@@ -29,7 +29,7 @@ def main(entry):
         request = Request(
             url,
             headers={
-                "User-Agent": "RNX-MetaIndux publication sync (rnx_metaindux@163.com)"
+                "User-Agent": "MetaIndux publication sync (rnx_metaindux@163.com)"
             },
         )
 

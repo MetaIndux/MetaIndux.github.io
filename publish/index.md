@@ -1,6 +1,6 @@
 ---
 title: Publish
-description: Books and teaching publications by Professor Lei Ren and the RNX-MetaIndux team.
+description: Books and teaching publications by Professor Lei Ren and the MetaIndux team.
 nav:
   order: 4
   tooltip: Books and publications

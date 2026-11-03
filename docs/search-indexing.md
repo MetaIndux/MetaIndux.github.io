@@ -1,6 +1,6 @@
 # 搜索收录维护
 
-正式站点：https://rnx-metaindux.github.io/
+正式站点：https://metaindux.github.io/
 
 成员页会直接输出中英文姓名、身份、单位与相关论文，不依赖 JavaScript。
 `_members/*.md` 中维护姓名、aliases（论文英文作者名）、职务、单位和已核实的外链；
@@ -18,6 +18,9 @@ GitHub Pages 成功部署后，`on-pages` 工作流会对比这次和上次实�
 首次启用时提交站点地图内的全部 URL，之后仅通知新增、内容变化或已删除的 URL。
 脚本会忽略每次构建自动变化的资源缓存版本，避免无内容更新时重复提交。
 提交前会核对线上验证文件。失败的部署不会触发提交。
+
+正式域名或站点路径迁移时，即使验证 key 沿用，也会在新地址下全量初始化一次，
+不会把旧域名的 URL 混入新域名提交。之后恢复正常的差异提交。
 
 接口为 `https://www.bing.com/indexnow`，无需再向 `cn.bing.com` 重复发送。
 HTTP 200 表示收到通知；202 表示收到通知、验证尚未完成。
@@ -48,7 +51,7 @@ IndexNow 验证文件不会自动授予站长后台账号访问权限。
 网站所有者可在 Google Search Console、Bing Webmaster Tools、百度搜索资源平台中
 添加本站，完成各平台要求的所有权验证，再提交站点地图：
 
-https://rnx-metaindux.github.io/sitemap.xml
+https://metaindux.github.io/sitemap.xml
 
 若平台提供 HTML meta 验证码，在 `_config.yaml` 中加入平台实际给出的 token：
 
@@ -64,9 +67,9 @@ webmaster_verifications:
 
 完成验证后优先检查并请求抓取首页、团队页，以及以下成员页：
 
-- https://rnx-metaindux.github.io/members/lei-ren.html
-- https://rnx-metaindux.github.io/members/haiteng-wang.html
-- https://rnx-metaindux.github.io/members/yunfei-zhu.html
+- https://metaindux.github.io/members/lei-ren.html
+- https://metaindux.github.io/members/haiteng-wang.html
+- https://metaindux.github.io/members/yunfei-zhu.html
 
 使用平台的 URL 检查报告确认实际索引状态；公开搜索没有结果不能单独证明未收录。
 有权编辑的学校个人主页或学术主页也可以增加本站成员页链接，帮助发现并区分同名作者。
@@ -83,22 +86,22 @@ webmaster_verifications:
 
 | 查询或论文 | 优先提交 URL |
 | --- | --- |
-| 北航任磊 | https://rnx-metaindux.github.io/members/lei-ren.html |
-| 北航王海腾 | https://rnx-metaindux.github.io/members/haiteng-wang.html |
-| Industrial Foundation Model | https://rnx-metaindux.github.io/research/industrial-foundation-model/ |
-| Foundation Models for the Process Industry | https://rnx-metaindux.github.io/research/foundation-models-process-industry/ |
-| AI Control Scientist | https://rnx-metaindux.github.io/research/ai-control-scientist/ |
-| PhysDGM | https://rnx-metaindux.github.io/research/physdgm/ |
-| VLT | https://rnx-metaindux.github.io/research/vlt/ |
-| TS-MLLM | https://rnx-metaindux.github.io/research/ts-mllm/ |
+| 北航任磊 | https://metaindux.github.io/members/lei-ren.html |
+| 北航王海腾 | https://metaindux.github.io/members/haiteng-wang.html |
+| Industrial Foundation Model | https://metaindux.github.io/research/industrial-foundation-model/ |
+| Foundation Models for the Process Industry | https://metaindux.github.io/research/foundation-models-process-industry/ |
+| AI Control Scientist | https://metaindux.github.io/research/ai-control-scientist/ |
+| PhysDGM | https://metaindux.github.io/research/physdgm/ |
+| VLT | https://metaindux.github.io/research/vlt/ |
+| TS-MLLM | https://metaindux.github.io/research/ts-mllm/ |
 
 在 [Google Search Console](https://search.google.com/search-console) 中添加网址前缀资源
-`https://rnx-metaindux.github.io/`，验证后提交 sitemap，并通过 URL 检查查看索引状态。
+`https://metaindux.github.io/`，验证后提交 sitemap，并通过 URL 检查查看索引状态。
 在[百度搜索资源平台](https://ziyuan.baidu.com/)验证站点后，检查抓取诊断及普通收录入口。
 若抓取失败，先看诊断中的连接与响应信息；不能仅凭 `github.io` 域名断定平台屏蔽。
 
 对于排名与身份区分，另一个实际步骤是由有权限的作者/学校管理员，在任磊等人的
-北航教师主页增加“RNX-MetaIndux 团队主页”链接，成员自己的学术资料也可链接本站个人页。
+北航教师主页增加“MetaIndux 团队主页”链接，成员自己的学术资料也可链接本站个人页。
 这些是指向本站的真实外部链接；本站链接回学校不能替代这个步骤。
 本仓库不会自动修改学校网站或未经授权的其他账号。
 

@@ -11,6 +11,15 @@ selected = IndexNow.changed_urls(after.keys, before.keys, ->(url) { after.fetch(
 abort 'Change detection must include new, edited and removed pages but ignore build cache versions' unless selected.sort == [updated, added, deleted].sort
 abort 'A no-change rebuild must not resubmit URLs' unless IndexNow.changed_urls(after.keys, after.keys, ->(url) { after[url] }, ->(url) { after[url] }).empty?
 
+previous_host_sitemap = '<urlset><url><loc>https://previous.example.org/members/updated.html</loc></url></urlset>'
+migration_urls = IndexNow.urls_to_submit(after.keys, previous_host_sitemap, origin,
+                                        ->(_url) { abort 'Domain migration must not compare current HTML' },
+                                        ->(_url) { abort 'Domain migration must not read old-host HTML' })
+abort 'A domain migration must initialize only the new host URLs' unless migration_urls == after.keys
+same_host_sitemap = '<urlset><url><loc>https://example.org/members/updated.html</loc></url></urlset>'
+same_host_urls = IndexNow.urls_to_submit([updated], same_host_sitemap, origin, ->(_url) { 'same' }, ->(_url) { 'same' })
+abort 'Same-host updates must retain incremental submission behavior' unless same_host_urls.empty?
+
 def must_reject(label)
   rejected = false
   begin

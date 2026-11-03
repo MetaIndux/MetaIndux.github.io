@@ -1,12 +1,12 @@
 ---
 title: Home
 seo_title: 北航任磊教授团队 · 工业大模型与工业智能体
-description: 北航（北京航空航天大学）任磊教授 RNX-MetaIndux 团队主页，介绍工业大模型、工业智能体、工业人工智能与智能制造研究，以及团队成员、论文与招生信息。
+description: 北航（北京航空航天大学）任磊教授 MetaIndux 团队主页，介绍工业大模型、工业智能体、工业人工智能与智能制造研究，以及团队成员、论文与招生信息。
 ---
 
 <div class="home-shell">
   <div class="home-introduction">
-    <h1>北航任磊教授团队 <span lang="en">RNX-MetaIndux</span></h1>
+    <h1>北航任磊教授团队 <span lang="en">MetaIndux</span></h1>
     <p>北京航空航天大学 · 工业大模型、工业智能体与智能制造</p>
   </div>
   <figure class="home-hero">
@@ -92,7 +92,7 @@ description: 北航（北京航空航天大学）任磊教授 RNX-MetaIndux 团�
 
       <section class="home-panel">
         <h2>团队成员 <span class="home-heading-en" lang="en">Team</span></h2>
-        <p>北京航空航天大学任磊教授 RNX-MetaIndux 团队，围绕工业人工智能、工业大模型与智能制造开展研究。</p>
+        <p>北京航空航天大学任磊教授 MetaIndux 团队，围绕工业人工智能、工业大模型与智能制造开展研究。</p>
         <ul>
           {% assign research_staff = site.members | where: "group", "researcher" | sort: "order" %}
           {% for member in research_staff %}

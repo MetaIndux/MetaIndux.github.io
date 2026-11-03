@@ -1,6 +1,6 @@
 ---
 title: Projects
-description: National and ministerial research projects led or undertaken by the RNX-MetaIndux team.
+description: National and ministerial research projects led or undertaken by the MetaIndux team.
 nav:
   order: 2
   tooltip: Research projects and funding

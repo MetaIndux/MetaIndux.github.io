@@ -40,6 +40,16 @@ module IndexNow
     end
   end
 
+  def self.urls_to_submit(current_urls, previous_sitemap, origin, current_html, previous_html)
+    previous_locations = Nokogiri::XML(previous_sitemap).xpath('//*[local-name()="loc"]').map(&:text)
+    # A domain or base-path migration starts a new submission history. Never
+    # submit the old host's URLs using the new host's ownership proof.
+    return current_urls if previous_locations.any? { |url| !url.start_with?(origin + '/') }
+
+    previous_urls = urls_from_sitemap(previous_sitemap, origin)
+    changed_urls(current_urls, previous_urls, current_html, previous_html)
+  end
+
   def self.git_file(directory, revision, path)
     stdout, _, status = Open3.capture3('git', '-C', directory, 'show', "#{revision}:#{path}")
     status.success? ? stdout : nil
@@ -92,10 +102,9 @@ module IndexNow
     if !options[:all] && old_key&.strip == key
       old_sitemap = git_file(directory, options[:previous], 'sitemap.xml')
       raise 'Previous sitemap unavailable; use --all for an intentional full submission' unless old_sitemap
-      old_urls = urls_from_sitemap(old_sitemap, origin)
-      urls = changed_urls(urls, old_urls,
-                          ->(url) { File.read(File.join(directory, page_path(url, origin)), encoding: 'UTF-8') },
-                          ->(url) { git_file(directory, options[:previous], page_path(url, origin)) || '' })
+      urls = urls_to_submit(urls, old_sitemap, origin,
+                            ->(url) { File.read(File.join(directory, page_path(url, origin)), encoding: 'UTF-8') },
+                            ->(url) { git_file(directory, options[:previous], page_path(url, origin)) || '' })
     end
     raise 'Too many URLs for a single IndexNow request' if urls.size > 10_000
     if urls.empty? || options[:dry_run]
