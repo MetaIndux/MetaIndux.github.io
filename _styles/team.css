@@ -68,6 +68,19 @@
   text-align: left;
 }
 
+.team-portraits .portrait-academics {
+  margin-top: 6px;
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.team-alumni {
+  padding-top: 28px;
+  border-top: 2px solid var(--light-gray);
+}
+
 @media (max-width: 850px) {
   .team-portraits {
     grid-template-columns: repeat(2, minmax(0, 1fr));
