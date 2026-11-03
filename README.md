@@ -5,7 +5,7 @@
 
   # RNX-MetaIndux's Website
 
-  Visit **[rnx-metaindux.github.io](https://rnx-metaindux.github.io)** 🚀
+  Visit **[metaindux.github.io](https://metaindux.github.io)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
 
