@@ -8,6 +8,8 @@
 {% endif %}
 
 {% assign type = site.data.types[member.role] %}
+{% assign member_position = member | member_position %}
+{% assign academic_details = member | member_academic_details %}
 
 <div class="portrait-wrapper">
   <a
@@ -44,8 +46,12 @@
 
     {% if member.description or type %}
       <span class="portrait-description">
-        {{ member.description | default: type.description }}
+        {{ member_position | default: type.description }}
       </span>
+    {% endif %}
+
+    {% if academic_details != '' %}
+      <span class="portrait-academics">{{ academic_details | xml_escape }}</span>
     {% endif %}
 
     {% if member.affiliation %}

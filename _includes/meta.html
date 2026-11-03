@@ -5,8 +5,10 @@
   {% assign member_affiliation = '北航（北京航空航天大学 / Beihang University）' %}
 {% endif %}
 {% if page.collection == 'members' %}
+  {% assign seo_position = page | member_position %}
+  {% assign seo_academics = page | member_academic_details %}
   {% capture seo_title %}{% if page.affiliation == 'Beihang University' %}北航{% endif %}{{ page.name }}{% if page.aliases.first %}（{{ page.aliases.first }}）{% endif %} · 个人主页与论文{% endcapture %}
-  {% capture seo_description %}{{ page.name }}{% if page.aliases.first %}（{{ page.aliases.first }}）{% endif %}，{{ member_affiliation }}{{ page.description }}，{{ site.title }} 团队成员。查看个人简介、学术主页与相关论文。{% endcapture %}
+  {% capture seo_description %}{{ page.name }}{% if page.aliases.first %}（{{ page.aliases.first }}）{% endif %}，{{ member_affiliation }}{{ seo_position }}{% if seo_academics != '' %}，{{ seo_academics }}{% endif %}，{{ site.title }} 团队成员。查看个人简介、学术主页与相关论文。{% endcapture %}
 {% endif %}
 {% assign fulltitle = seo_title | append: ' | ' | append: site.title %}
 {% assign seo_description = seo_description | strip_html | normalize_whitespace | strip %}

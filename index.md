@@ -94,7 +94,7 @@ description: 北航（北京航空航天大学）任磊教授 MetaIndux 团队�
         <h2>团队成员 <span class="home-heading-en" lang="en">Team</span></h2>
         <p>北京航空航天大学任磊教授 MetaIndux 团队，围绕工业人工智能、工业大模型与智能制造开展研究。</p>
         <ul>
-          {% assign research_staff = site.members | where: "group", "researcher" | sort: "order" %}
+          {% assign research_staff = site.members | active_members | where: "group", "researcher" | sort: "order" %}
           {% for member in research_staff %}
           <li><a href="{{ member.url | relative_url }}">{{ member.name }}</a> · {{ member.description }}</li>
           {% endfor %}

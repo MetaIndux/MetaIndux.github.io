@@ -1,0 +1,150 @@
+name: 提交或更新成员资料
+description: 上传个人照片，填写个人简介、研究方向、代表工作和公开联系方式。
+title: "[成员资料] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## MetaIndux 成员资料提交
+        用于新增或更新团队个人主页，无需仓库写权限。
+        **这里是公开仓库，填写的资料与上传的照片会公开可见。** 请仅提交愿意公开的信息。
+        提交后由网站维护者核对并更新主页，不会自动发布到网站。
+        [填写说明与模板](https://metaindux.github.io/team/submit/)
+  - type: input
+    id: member_name
+    attributes:
+      label: 中文姓名
+      placeholder: 请填写本人中文姓名
+    validations:
+      required: true
+  - type: input
+    id: english_name
+    attributes:
+      label: 英文姓名 / 论文署名
+      description: 与论文中的本人英文署名一致，方便关联已有成果。
+      placeholder: Given-name Family-name
+    validations:
+      required: true
+  - type: input
+    id: member_page
+    attributes:
+      label: 现有个人页
+      description: 已有主页请填完整链接，首次加入可留空。
+      placeholder: https://metaindux.github.io/members/your-name.html
+  - type: input
+    id: position
+    attributes:
+      label: 当前身份与所属单位
+      description: 填写实际身份、学校或机构、学院；入学与毕业情况请在下方单独填写。
+      placeholder: 博士研究生，学校、学院（请填写本人实际信息）
+    validations:
+      required: true
+  - type: dropdown
+    id: student_status
+    attributes:
+      label: 在读 / 毕业状态
+      description: 请填写本人当前实际状态，已毕业成员会展示在团队页最下方的毕业成员区域。
+      options:
+        - 在读
+        - 已毕业
+        - 非学生（教师、研究人员等）
+    validations:
+      required: true
+  - type: dropdown
+    id: degree_stage
+    attributes:
+      label: 博士 / 硕士阶段
+      description: 学生与毕业成员请选择本次主页展示的培养阶段；其他身份选不适用。
+      options:
+        - 博士
+        - 硕士
+        - 非学生 / 不适用
+    validations:
+      required: true
+  - type: input
+    id: enrollment_year
+    attributes:
+      label: 入学年份
+      description: 学生与毕业成员请填写对应博士或硕士阶段的四位入学年份；非学生可留空。
+      placeholder: 例如2023，请填写本人实际入学年份
+  - type: input
+    id: study_year
+    attributes:
+      label: 当前年级 / 毕业情况
+      description: 在读请写明博士或硕士几年级；已毕业填“已毕业”，非学生填“不适用”。当前年级由本人确认，不按入学年份自动推算。
+      placeholder: 博士三年级 / 硕士二年级 / 已毕业 / 不适用
+    validations:
+      required: true
+  - type: input
+    id: graduation_year
+    attributes:
+      label: 毕业年份
+      description: 已毕业成员请填写实际毕业的四位年份；在读与非学生可留空，不填写预计毕业年份。
+      placeholder: 例如2026，请填写本人实际毕业年份
+  - type: textarea
+    id: biography
+    attributes:
+      label: 个人简介
+      description: 建议100–200字，介绍当前身份、主要研究问题、研究方法和应用场景；教育经历与奖项可选。
+      placeholder: |
+        我目前在【学校及学院】从事【具体研究问题】研究，主要采用【方法】，关注【应用场景】。
+        近期参与【真实项目或研究主题】，负责【本人实际工作】。
+        请替换方括号内容，不要直接提交示例。
+    validations:
+      required: true
+  - type: textarea
+    id: research_interests
+    attributes:
+      label: 研究方向
+      description: 建议3–5项，每项用“方向名称 + 一句具体说明”，填写本人实际方向。
+      placeholder: |
+        1. 【研究方向一】：【关注的具体问题】。
+        2. 【研究方向二】：【采用的方法或应用场景】。
+        3. 【研究方向三】：【关注的具体问题】。
+    validations:
+      required: true
+  - type: textarea
+    id: selected_work
+    attributes:
+      label: 代表工作
+      description: 建议2–5项，可填写论文、项目、软件或数据集；暂无公开成果可填“暂无”。请区分已发表、预印本和已录用。
+      placeholder: |
+        ### 工作1
+        - 标题：
+        - 类型与状态：
+        - 作者、年份、发表渠道：
+        - 工作简介（40–80字）：
+        - 本人贡献（请本人确认）：
+        - 论文或项目链接：
+        - 代码、数据或演示链接（选填）：
+
+        ### 工作2
+        （按相同格式填写）
+    validations:
+      required: true
+  - type: textarea
+    id: public_contact
+    attributes:
+      label: 公开联系方式
+      description: 邮箱、个人主页、Google Scholar、ORCID、GitHub均可选；不希望公开可填“不公开”。无需填写电话或家庭住址。
+      placeholder: |
+        学术邮箱：
+        个人主页：
+        Google Scholar / ORCID / GitHub（选填）：
+    validations:
+      required: false
+  - type: textarea
+    id: portrait
+    attributes:
+      label: 个人照片
+      description: 把本人照片拖入或粘贴到此处，等待图片链接生成后再提交。建议JPG或PNG、600×600像素以上、3MB以内。仅更新文字可填“沿用现有照片”，暂无照片可填“使用默认头像”。
+      placeholder: 在此拖入、粘贴或选择上传照片；不要填写电脑本地文件路径。
+    validations:
+      required: true
+  - type: checkboxes
+    id: publication_confirmation
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我是资料本人或已获得本人授权，确认所填内容准确，并同意将本次提交的资料与照片用于公开成员主页。
+          required: true

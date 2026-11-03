@@ -14,11 +14,20 @@ nav:
     <p class="page-intro-en" lang="en">Our team studies industrial AI, industrial foundation models, industrial agents, and embodied intelligence.</p>
   </div>
 
+  <div class="member-submission-banner">
+    <div>
+      <h2>完善你的个人主页</h2>
+      <p>提交照片、科研介绍，以及入学年份、当前年级与毕业信息。</p>
+    </div>
+    <a class="button" href="{{ '/team/submit/' | relative_url }}">提交或更新成员资料</a>
+  </div>
+
 {% assign team_groups = "researcher,phd,master" | split: "," %}
 {% assign team_titles = "Research Staff,Ph.D. Students,Master Students" | split: "," %}
+{% assign current_members = site.members | active_members %}
 
 {% for group in team_groups %}
-{% assign members = site.members | where: "group", group | sort: "order" %}
+{% assign members = current_members | where: "group", group | sort: "order" %}
 {% if members.size > 0 %}
 <div class="team-portrait-group">
   <h2>{{ team_titles[forloop.index0] }}</h2>
@@ -30,4 +39,16 @@ nav:
 </div>
 {% endif %}
 {% endfor %}
+
+{% assign graduates = site.members | alumni_members | sort: "order" %}
+{% if graduates.size > 0 %}
+<div class="team-portrait-group team-alumni">
+  <h2>毕业成员 <span lang="en">Alumni</span></h2>
+  <div class="team-portraits">
+    {% for member in graduates %}
+      {% include portrait.html lookup=member.slug %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 </div>

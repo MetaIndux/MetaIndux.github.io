@@ -54,6 +54,7 @@ jobs:
         run: |
           bundle exec ruby scripts/check-site.rb
           bundle exec ruby scripts/check-indexnow.rb
+          bundle exec ruby scripts/check-members.rb
 
       - name: Commit live site to Pages branch
         uses: JamesIves/github-pages-deploy-action@v4.5.0
