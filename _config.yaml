@@ -77,7 +77,7 @@ exclude:
   - docs
   - scripts
   - tmp
-  - _members/templates
+  - _members/template
 
 # configure jekyll spaceship
 jekyll-spaceship:

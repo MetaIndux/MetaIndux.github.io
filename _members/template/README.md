@@ -1,6 +1,22 @@
 # 成员科研介绍填写与提交
 
-成员直接在 GitHub 仓库中编辑本人资料。[example.md](example.md) 提供各身份的完整成员文件模板，不需要填写网站表单。
+成员直接在 GitHub 仓库中编辑本人资料。请先从下方选择对应身份的独立完整模板，不需要填写网站表单。
+
+## 按身份选择完整模板
+
+| 本人身份 | 完整模板 |
+| --- | --- |
+| 在读博士 | [phd.md](phd.md) |
+| 在读硕士 | [master.md](master.md) |
+| 已毕业博士 | [phd-alumni.md](phd-alumni.md) |
+| 已毕业硕士 | [master-alumni.md](master-alumni.md) |
+| 博士后 | [postdoc.md](postdoc.md) |
+| 助理研究员 | [assistant-researcher.md](assistant-researcher.md) |
+| 研究员 | [researcher.md](researcher.md) |
+| 助理教授 | [assistant-professor.md](assistant-professor.md) |
+| 教授 | [professor.md](professor.md) |
+
+每份文件包含标题、简短复制说明和一个完整 Markdown 代码块。**只复制代码块内部从第一行 `---` 到最后 `</div>` 的全部内容**，不复制外部标题、说明或代码围栏，不拼接多份模板。
 
 仓库中的文件、照片、提交记录及 Pull Request 都是公开的，请只填写可以公开展示的资料。模板不对应真实人物，姓名、年份、年级等占位内容必须替换为本人资料；与所选身份对应的固定配置值保留。
 
@@ -13,9 +29,9 @@
 
 ## 新增成员
 
-1. 打开 [example.md](example.md)，先按本人真实身份选择对应的完整模板：在读博士、在读硕士、已毕业博士、已毕业硕士，或对应的研究人员身份。复制该模板代码块内部的**全部内容**，从第一行 `---` 到最后的 `</div>`；不要复制代码围栏，不要拼接多个模板。
+1. 从[完整模板索引](#按身份选择完整模板)打开与本人真实身份对应的独立文件。复制其中代码块内部的**全部内容**，从第一行 `---` 到最后的 `</div>`；不要复制外部标题、说明或代码围栏，不要拼接多个模板。
 2. 在 [`_members` 目录](https://github.com/MetaIndux/MetaIndux.github.io/tree/main/_members)使用 **Add file → Create new file**，新建 `<slug>.md`，例如以本人姓名的英文拼写组成文件名。请先确认没有重名文件，并与维护者确定稳定的文件名。
-3. 粘贴所选完整模板，按文件中的注释填写姓名、英文署名、培养信息、照片、联系方式和正文。模板已固定对应身份的 `role`、`group`、`status` 和适用的 `degree`，无需自行选择代码值；若模板身份不符，应重新选择正确模板。新成员文件应放在 `_members/` 下，**不要放进 `_members/templates/`**，也不要直接把 `example.md` 改成个人资料。
+3. 粘贴所选完整模板，按文件中的注释填写姓名、英文署名、培养信息、照片、联系方式和正文。模板已固定对应身份的 `role`、`group`、`status` 和适用的 `degree`，无需自行选择代码值；若模板身份不符，应重新选择正确模板。新成员文件应放在 `_members/` 下，**不要放进 `_members/template/`**，也不要直接把模板文件改成个人资料。
 
 ## 必填信息与 YAML 字段
 
@@ -92,4 +108,4 @@ links:
 
 提交前检查：姓名与身份准确；学生培养阶段、入学年份、年级或毕业年份已核实；所有文字值使用英文半角双引号，两个年份字段是未加引号的四位整数；条件不适用的字段已整行删除；链接有效且没有空子项；使用个人照片时照片已上传，否则保留统一占位路径；所有样例占位文字和 `【】` 已删除；公开联系方式经过本人确认。
 
-Commit 或 Pull Request 不等于网站已经发布。变更进入 `main` 后，还需等待 GitHub Actions 构建和 GitHub Pages 部署成功，再检查正式个人页面。`_members/templates/` 只存放填写说明与样例，不作为成员资料发布。
+Commit 或 Pull Request 不等于网站已经发布。变更进入 `main` 后，还需等待 GitHub Actions 构建和 GitHub Pages 部署成功，再检查正式个人页面。`_members/template/` 只存放填写说明与模板，不作为成员资料发布。

@@ -11,4 +11,4 @@
 
 搜索收录配置与站长平台提交：[维护说明](docs/search-indexing.md)。
 
-成员资料直接在 GitHub 仓库中提交：[填写与提交说明](_members/templates/README.md)、[成员资料样例](_members/templates/example.md)。照片上传至 [images/people](images/people/)。
+成员资料直接在 GitHub 仓库中提交：[填写与提交说明](_members/template/README.md)、[各身份完整模板目录](_members/template/)。照片上传至 [images/people](images/people/)。

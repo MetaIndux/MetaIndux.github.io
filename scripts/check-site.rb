@@ -75,11 +75,13 @@ end
 check.call(team.css('.member-submission-banner').empty?, 'Team page must not expose submission controls')
 check.call(!File.exist?(File.join(destination, 'team/submit/index.html')), 'Removed submission page is still published')
 check.call(!File.exist?(File.join(destination, 'downloads/member-profile-template.md')), 'Removed public download is still published')
-check.call(!locations.any? { |url| url.include?('/team/submit/') || url.include?('/members/templates/') }, 'Submission pages or examples must not appear in sitemap')
-check.call(config.fetch('exclude').include?('_members/templates'), 'Repository-only member examples must be excluded')
-check.call(!File.exist?(File.join(destination, 'members/templates')), 'Member templates leaked into the published site')
-%w[README.md example.md].each do |file|
-  check.call(File.file?(File.join(root, '_members/templates', file)), "Missing GitHub member guide/example: #{file}")
+check.call(!locations.any? { |url| url.include?('/team/submit/') || url.match?(%r{/members/templates?/}) }, 'Submission pages or examples must not appear in sitemap')
+check.call(config.fetch('exclude').include?('_members/template'), 'Repository-only member templates must be excluded')
+%w[template templates].each do |folder|
+  check.call(!File.exist?(File.join(destination, 'members', folder)), 'Member templates leaked into the published site')
+end
+%w[README.md phd.md master.md phd-alumni.md master-alumni.md postdoc.md assistant-researcher.md researcher.md assistant-professor.md professor.md].each do |file|
+  check.call(File.file?(File.join(root, '_members/template', file)), "Missing GitHub member guide/template: #{file}")
 end
 check.call(File.read(File.join(destination, 'robots.txt')).include?("Sitemap: #{origin}/sitemap.xml"), 'Missing robots sitemap URL')
 check.call(!locations.include?(origin + '/404.html'), '404 must not appear in sitemap')
