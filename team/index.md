@@ -19,7 +19,12 @@ nav:
 {% assign current_members = site.members | active_members %}
 
 {% for group in team_groups %}
-{% assign members = current_members | where: "group", group | sort: "order" %}
+{% assign members = current_members | where: "group", group %}
+{% if group == 'researcher' %}
+{% assign members = members | sort: "order" %}
+{% else %}
+{% assign members = members | members_by_enrollment %}
+{% endif %}
 {% if members.size > 0 %}
 <div class="team-portrait-group">
   <h2>{{ team_titles[forloop.index0] }}</h2>
@@ -32,7 +37,7 @@ nav:
 {% endif %}
 {% endfor %}
 
-{% assign graduates = site.members | alumni_members | sort: "order" %}
+{% assign graduates = site.members | alumni_members | members_by_enrollment %}
 {% if graduates.size > 0 %}
 <div class="team-portrait-group team-alumni">
   <h2>毕业成员 <span lang="en">Alumni</span></h2>

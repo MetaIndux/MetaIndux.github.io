@@ -17,6 +17,16 @@ module Jekyll
       Array(members).select { |member| member_is_alumni(member) }
     end
 
+    def members_by_enrollment(members)
+      Array(members).sort_by do |member|
+        data = member_data(member)
+        year = data['enrollment_year'].to_s
+        known_year = year.match?(/\A\d{4}\z/)
+        identity = (data['slug'] || data['name']).to_s.downcase
+        [known_year ? 0 : 1, known_year ? year.to_i : 0, identity]
+      end
+    end
+
     def member_degree(member)
       data = member_data(member)
       %w[degree role group].each do |field|

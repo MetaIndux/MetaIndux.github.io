@@ -2,7 +2,7 @@
 
 本文件只提供格式示例，不对应真实成员。请先对照下面的可选值填写，再复制“完整成员文件样例”中的**整个代码块**到自己的 `_members/<姓名英文拼写>.md`。不要把本页说明表也复制进个人主页。
 
-已有成员请编辑本人的原文件，保留文件名、原有 `name`、`role`、`group`、`order` 和已核实的内容。下方姓名、年份、年级、邮箱及链接都是示例，需要按本人情况替换。
+已有成员请编辑本人的原文件，保留文件名、原有 `name`、`role`、`group` 和已核实的内容。下方姓名、年份、年级、邮箱及链接都是示例，需要按本人情况替换。
 
 ## 每个字段怎么填
 
@@ -12,7 +12,6 @@
 | `aliases` | 必填 | 英文论文署名，使用列表；有多种本人署名可分行增加 | `San Zhang`、`S. Zhang` |
 | `role` | 必填 | 常用：`phd` 博士生、`master` 硕士生、`postdoc` 博士后、`assistant-researcher` 助理研究员、`researcher` 研究员、`assistant-professor` 助理教授、`professor` 教授、`principal-investigator` 团队负责人；已有成员保留原值 | 博士生填 `phd`，硕士生填 `master` |
 | `group` | 必填 | `researcher` 研究人员、`phd` 博士生、`master` 硕士生；**毕业时保留原组**，通过 `status` 标记毕业 | 博士生填 `phd`；教授、博士后通常填 `researcher` |
-| `order` | 必填 | 不带引号的整数，用于组内展示排序；新成员与维护者确认，已有成员保留原值 | `1`、`10`、`999` |
 | `description` | 必填 | 公开展示的中文身份说明，不是代码枚举；与实际身份一致 | `博士研究生`、`硕士研究生`、`博士后`、`助理研究员`、`博士毕业生` |
 | `affiliation` | 必填 | 所属学校或机构的名称，不是固定选项；已有正确值可沿用 | 北航填 `Beihang University`；其他单位填写实际名称 |
 | `degree` | 学生与毕业成员填写 | `phd` 博士、`master` 硕士；教师、博士后等不适用时删除此字段 | 博士阶段填 `phd`，硕士阶段填 `master` |
@@ -24,6 +23,8 @@
 | `links` | 选填 | 公开联系方式与学术链接；使用下表中的键。没有链接时填 `links: {}` | `links:` 下填写 `email`、`home-page` 等；空对象写为 `{}` |
 
 `role`、`group`、`degree` 是不同字段，不要把“博士三年级”等中文年级写到这些字段里。当前年级写在 `study_year`。毕业时设置 `status: alumni`、填写 `graduation_year`、删除 `study_year`，保留原文件名和分组。
+
+成员无需填写 `order`。博士生组、硕士生组及团队页最下方的毕业成员组，分别按 `enrollment_year` 从早到晚排序；同年入学按文件名排序，未填写入学年份的成员放在对应组末尾。研究人员的显示顺序由维护者管理。
 
 ## links 中可以填哪些内容
 
@@ -49,7 +50,6 @@ aliases:
   - "【本人英文论文署名】" # 必填；参考：San Zhang；其他本人署名可继续加一行。
 role: phd # 可选参考：phd博士生、master硕士生、postdoc博士后、professor教授；已有成员保留原值。
 group: phd # 可选：researcher研究人员、phd博士生、master硕士生；毕业不改原组。
-order: 999 # 必填整数；参考：1、10、999；新成员请与维护者确认排序。
 description: "博士研究生" # 必填文本；参考：硕士研究生、博士后、助理研究员、博士毕业生。
 affiliation: Beihang University # 必填文本；北航用此值，其他单位填实际名称。
 degree: phd # 学生可选：phd博士、master硕士；非学生删除。

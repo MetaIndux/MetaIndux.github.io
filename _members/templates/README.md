@@ -8,13 +8,13 @@
 
 1. 打开 [`_members` 成员目录](https://github.com/MetaIndux/MetaIndux.github.io/tree/main/_members)，找到本人的 `<slug>.md` 文件。`slug` 是文件名，例如姓名的英文拼写；不要为已有成员重复创建文件。
 2. 打开文件并点击编辑按钮。保留最上方两条 `---` 之间的 YAML 配置及其格式，按下文说明更新资料，在配置下方填写四节正文。
-3. 保留原文件名、已有 `slug`（如有）、`name`、`role`、`group` 和 `order`；毕业时设置 `status: alumni`，不要通过改名或随意换组来移动成员。
+3. 保留原文件名、已有 `slug`（如有）、`name`、`role` 和 `group`；毕业时设置 `status: alumni`，不要通过改名或随意换组来移动成员。
 4. 保留已有准确的英文别名 `aliases`、照片和学术链接。已有详细介绍应按需补充，尤其不要用样例覆盖 PI 的完整简介。
 
 ## 新增成员
 
 1. 打开 [example.md](example.md)，先看字段的可选值和参考例子，再复制“完整成员文件样例”代码块内部的全部内容。内容应从第一行 `---` 开始；不要复制代码围栏、说明表或下方的配置片段。
-2. 在 [`_members` 目录](https://github.com/MetaIndux/MetaIndux.github.io/tree/main/_members)使用 **Add file → Create new file**，新建 `<slug>.md`，例如以本人姓名的英文拼写组成文件名。请先确认没有重名文件，并与维护者确定稳定的文件名和展示顺序。
+2. 在 [`_members` 目录](https://github.com/MetaIndux/MetaIndux.github.io/tree/main/_members)使用 **Add file → Create new file**，新建 `<slug>.md`，例如以本人姓名的英文拼写组成文件名。请先确认没有重名文件，并与维护者确定稳定的文件名。
 3. 粘贴样例，替换姓名、身份、英文署名、培养信息和正文，删除不适用的占位内容。新成员文件应放在 `_members/` 下，**不要放进 `_members/templates/`**，也不要直接把 `example.md` 改成个人资料。
 
 ## 必填信息与 YAML 字段
@@ -26,7 +26,6 @@
 | `name` | 本人中文姓名。更新已有文件时保留原值，姓名纠错应与维护者确认。 |
 | `aliases` | 本人的英文论文署名；保留已有有效别名，不填写其他同名作者的名字。 |
 | `role`、`group` | 新增博士生通常均填 `phd`，新增硕士生通常均填 `master`；其他身份请与维护者确认。更新已有成员时保留原值。 |
-| `order` | 展示顺序，与维护者确认；更新已有成员时保留原值。 |
 | `degree` | 博士阶段填 `phd`，硕士阶段填 `master`。对应本次展示的培养阶段。 |
 | `status` | 在读／在岗填 `active`，已确认毕业填 `alumni`。必须依据本人真实状态明确填写，不能把样例中的选项直接当作本人状态。 |
 | `enrollment_year` | 该博士或硕士阶段的入学年份，填写四位数字，不加引号。不要用本科入学年份替代。 |
@@ -37,9 +36,11 @@
 | `image` | 仓库中照片的路径，例如 `/images/people/本人照片文件名.jpg`。 |
 | `links` | 愿意公开的学术邮箱和学术账号；没有相应链接时可保留 `links: {}`。 |
 
+成员无需填写 `order`。博士生组、硕士生组及团队页最下方的毕业成员组，分别按 `enrollment_year` 从早到晚排序；同年入学按文件名排序，未填写入学年份的成员放在对应组末尾。研究人员的显示顺序由维护者管理。
+
 不要把 `YYYY`、方括号提示或“待替换”当作真实资料提交。**不得从姓名、照片或入学年份猜测是否毕业、当前年级，也不得通过年份相减自动确定年级。** 尚未确认的资料先向本人核实；不要用假定的毕业状态替换现有记录。
 
-毕业成员保留原 `role`、`group`、`order` 和个人页 slug，设置 `status: alumni` 后会集中展示在团队页最下方，原个人页面链接不变。仓库兼容已有的 `group: alumni`、`group: phd-alumni`、`group: master-alumni` 及 `role: phd-alumni`、`role: master-alumni`，不必为更新介绍而改写这些旧分类；也不要把已毕业成员误改为 `active`。
+毕业成员保留原 `role`、`group` 和个人页 slug，设置 `status: alumni` 后会集中展示在团队页最下方，原个人页面链接不变。仓库兼容已有的 `group: alumni`、`group: phd-alumni`、`group: master-alumni` 及 `role: phd-alumni`、`role: master-alumni`，不必为更新介绍而改写这些旧分类；也不要把已毕业成员误改为 `active`。
 
 ## 正文填写四节
 
