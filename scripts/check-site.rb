@@ -43,7 +43,7 @@ Dir.glob(File.join(root, '_members', '*.md')).each do |source|
   Array(member['aliases']).each { |alias_name| check.call(main.include?(alias_name), "#{slug}: missing English name") }
   check.call(title.include?(name) && description.include?(name) && description.include?(config.fetch('title')), "#{slug}: incomplete metadata")
   if member['affiliation'] == 'Beihang University'
-    check.call(title.include?("北航#{name}") && main.include?('北航') && main.include?('北京航空航天大学'), "#{slug}: missing Beihang name association")
+    check.call(title.include?("北航#{name}") && main.include?('北京航空航天大学'), "#{slug}: missing Beihang name association")
   end
   check.call(canonical.size == 1 && canonical.first['href'] == expected_url, "#{slug}: incorrect canonical")
   check.call(document.at_css('meta[property="og:url"]')&.[]('content') == expected_url, "#{slug}: incorrect social URL")
@@ -52,10 +52,13 @@ Dir.glob(File.join(root, '_members', '*.md')).each do |source|
   check.call(team.css('a[href]').any? { |link| link['href'] == config.fetch('baseurl', '') + route }, "#{slug}: missing team link")
   check.call(document.css('.member-submission-actions, .member-submission-banner').empty?, "#{slug}: public submission controls must be absent")
   summary = document.at_css('.member-heading .member-summary')
-  check.call(summary && summary.text.include?(member_filters.member_position(member)) && summary.text.include?(config.fetch('title')), "#{slug}: missing compact identity summary")
+  check.call(summary && summary.text.include?(member_filters.member_position(member)), "#{slug}: missing compact identity summary")
+  academic_details = member_filters.member_academic_details(member)
+  check.call(academic_details.empty? || summary&.text&.include?(academic_details), "#{slug}: missing compact academic details")
+  check.call(document.css('.member-heading .member-school, .member-heading .member-breadcrumb').empty?, "#{slug}: heading must contain only name and key identity details")
   check.call(member['schools'].is_a?(Array) && member['schools'].all? { |school| school.is_a?(String) && !school.strip.empty? }, "#{slug}: schools must be a list of names or []")
   expected_schools = member_filters.member_schools(member)
-  check.call(document.css('.member-heading .member-school').map(&:text) == expected_schools, "#{slug}: incorrect profile school labels")
+  check.call(document.css('.member-sidebar .portrait-schools .member-school').map(&:text) == expected_schools, "#{slug}: incorrect school labels below portrait")
   team_portrait = team.css('a.portrait[href]').find { |link| link['href'] == config.fetch('baseurl', '') + route }
   check.call(team_portrait && team_portrait.css('.member-school').map(&:text) == expected_schools, "#{slug}: incorrect team school labels")
   Array(member['links']).each do |key, value|

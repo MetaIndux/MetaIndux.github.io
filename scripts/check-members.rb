@@ -10,7 +10,7 @@ abort 'Repository-only templates must not be copied as static files' if collecti
 
 def sample_member(site, collection, slug, values)
   member = Jekyll::Document.new(File.join(site.source, '_members', "#{slug}.md"), site: site, collection: collection)
-  member.data.merge!({ 'name' => slug, 'aliases' => [slug], 'affiliation' => 'Beihang University', 'description' => '博士研究生', 'last_modified_at' => nil }.merge(values))
+  member.data.merge!({ 'name' => slug, 'slug' => slug, 'aliases' => [slug], 'affiliation' => 'Beihang University', 'description' => '博士研究生', 'last_modified_at' => nil }.merge(values))
   member.content = ''
   member
 end
@@ -61,7 +61,8 @@ text = profile.at_css('main').text
 abort 'Graduated profile has incorrect identity' unless text.include?('博士毕业生') && text.include?('2020年入学') && text.include?('2025年毕业')
 abort 'Graduated profile still shows a current study year' if text.include?('博士四年级')
 abort 'Profile must have one name heading' unless profile.css('main h1').size == 1
-abort 'Empty school information must not create labels' unless profile.css('.member-heading .member-school').empty?
+abort 'Empty school information must not create labels' unless profile.css('.member-sidebar .member-school').empty?
 current_profile = Nokogiri::HTML(Jekyll::Renderer.new(site, current).run)
-abort 'A member must be able to display multiple schools' unless current_profile.css('.member-heading .member-school').map(&:text) == ['软件学院', '示例学院']
+abort 'A member must be able to display multiple schools below the portrait' unless current_profile.css('.member-sidebar .portrait-schools .member-school').map(&:text) == ['软件学院', '示例学院']
+abort 'Schools must not clutter the heading' unless current_profile.css('.member-heading .member-school').empty?
 puts 'Verified in memory: enrollment sorting, unchanged staff order, year/status display, legacy alumni records, graduates at the bottom and a single-name profile. No sample files were published.'

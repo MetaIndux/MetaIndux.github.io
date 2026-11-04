@@ -4,15 +4,10 @@ layout: default
 
 {% assign profile_position = page | member_position %}
 {% assign profile_academics = page | member_academic_details %}
-{% assign profile_schools = page | member_schools %}
 <div class="member-heading">
-  <p class="member-breadcrumb"><a href="{{ '/team/' | relative_url }}">团队成员 / Team</a></p>
   <h1>{{ page.name }}{% if page.aliases.first %} <span lang="en">{{ page.aliases.first }}</span>{% endif %}</h1>
   <p class="member-summary">
-    <span>{{ profile_position | xml_escape }} · {% if page.affiliation == 'Beihang University' %}北航（北京航空航天大学） / {% endif %}<span lang="en">{{ page.affiliation | xml_escape }}</span></span>
-    {% if profile_schools.size > 0 %}<span class="member-schools" aria-label="所属学院">{% for school in profile_schools %}<span class="member-school">{{ school | xml_escape }}</span>{% endfor %}</span>{% endif %}
-    {% if profile_academics != '' %}<span class="member-academics">{{ profile_academics | xml_escape }}</span>{% endif %}
-    <span><a href="{{ '/' | relative_url }}">{{ site.title }}</a> 团队成员</span>
+    {{ profile_position | xml_escape }}{% if profile_academics != '' %} · <span class="member-academics">{{ profile_academics | xml_escape }}</span>{% endif %}
   </p>
 </div>
 
