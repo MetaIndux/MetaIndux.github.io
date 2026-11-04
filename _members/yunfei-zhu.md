@@ -29,20 +29,12 @@ links:
 
 ## 代表工作
 
-### AeroFST: Few-Shot Source-to-Target Airfoil Flow Reconstruction from Sparse Measurements
+##### AeroFST: Few-Shot Source-to-Target Airfoil Flow Reconstruction from Sparse Measurements IECON 2026，第一作者，已录用。面向稀疏测量条件下的翼型流场重构，研究少样本源域到目标域建模方法。
 
-IECON 2026，第一作者，已录用。面向稀疏测量条件下的翼型流场重构，研究少样本源域到目标域建模方法。
-
-### TS-MLLM: A Multi-Modal Large Language Model-based Framework for Industrial Time-Series Big Data Analysis
-
-IEEE Transactions on Big Data，第三作者，已录用。融合工业传感器时序、频域图像与文本领域知识，开展工业时间序列分析与设备健康管理研究。
-
+##### TS-MLLM: A Multi-Modal Large Language Model-based Framework for Industrial Time-Series Big Data Analysis IEEE Transactions on Big Data，第三作者，已录用。融合工业传感器时序、频域图像与文本领域知识，开展工业时间序列分析与设备健康管理研究。
 [预印本](https://arxiv.org/abs/2603.07572)
 
 ### Physics-informed Diffusion Generative Model for Time-Series Data Synthesis in Dynamic Systems
-
-2026，预印本。将物理规律融入扩散生成过程，研究动态系统中的时间序列数据合成。
-
 [预印本](https://arxiv.org/abs/2608.10941)
 
 ## 公开联系方式
