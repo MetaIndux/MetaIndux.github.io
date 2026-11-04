@@ -5,6 +5,8 @@ root = Dir.pwd
 site = Jekyll::Site.new(Jekyll.configuration('source' => root, 'config' => File.join(root, '_config.yaml'), 'quiet' => true))
 site.read
 collection = site.collections.fetch('members')
+abort 'Repository-only templates must not enter the member collection' if collection.docs.any? { |member| member.relative_path.include?('/templates/') }
+abort 'Repository-only templates must not be copied as static files' if collection.files.any? { |file| file.relative_path.include?('/templates/') }
 
 def sample_member(site, collection, slug, values)
   member = Jekyll::Document.new(File.join(site.source, '_members', "#{slug}.md"), site: site, collection: collection)

@@ -14,14 +14,6 @@ nav:
     <p class="page-intro-en" lang="en">Our team studies industrial AI, industrial foundation models, industrial agents, and embodied intelligence.</p>
   </div>
 
-  <div class="member-submission-banner">
-    <div>
-      <h2>完善你的个人主页</h2>
-      <p>提交照片、科研介绍，以及入学年份、当前年级与毕业信息。</p>
-    </div>
-    <a class="button" href="{{ '/team/submit/' | relative_url }}">提交或更新成员资料</a>
-  </div>
-
 {% assign team_groups = "researcher,phd,master" | split: "," %}
 {% assign team_titles = "Research Staff,Ph.D. Students,Master Students" | split: "," %}
 {% assign current_members = site.members | active_members %}

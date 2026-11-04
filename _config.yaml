@@ -1,6 +1,5 @@
 # site properties and page defaults
 title: MetaIndux
-repository: MetaIndux/MetaIndux.github.io
 subtitle: 
 description: 北京航空航天大学任磊教授 MetaIndux 团队，研究工业大模型、工业人工智能、工业智能体、具身智能与智能制造。
 url: https://metaindux.github.io
@@ -78,6 +77,7 @@ exclude:
   - docs
   - scripts
   - tmp
+  - _members/templates
 
 # configure jekyll spaceship
 jekyll-spaceship:

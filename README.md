@@ -11,4 +11,4 @@
 
 搜索收录配置与站长平台提交：[维护说明](docs/search-indexing.md)。
 
-成员照片与科研介绍：[在线提交入口](https://metaindux.github.io/team/submit/)、[填写模板](downloads/member-profile-template.md)、[维护者指南](docs/member-profile-maintenance.md)。
+成员资料直接在 GitHub 仓库中提交：[填写与提交说明](_members/templates/README.md)、[成员资料样例](_members/templates/example.md)。照片上传至 [images/people](images/people/)。
