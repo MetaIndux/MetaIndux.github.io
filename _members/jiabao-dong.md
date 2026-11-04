@@ -5,6 +5,7 @@ group: researcher
 order: 4
 description: 助理研究员
 affiliation: Beihang University
+schools: []
 image: /images/people/董家宝助理研究员.png
 aliases:
   - Jiabao Dong

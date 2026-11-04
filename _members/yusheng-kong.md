@@ -5,6 +5,7 @@ group: phd
 order: 13
 description: 博士研究生
 affiliation: Beihang University
+schools: []
 image: /images/people/孔宇升博士.jpg
 aliases:
   - Yusheng Kong

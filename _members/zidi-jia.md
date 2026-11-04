@@ -5,6 +5,7 @@ group: researcher
 order: 6
 description: 助理教授
 affiliation: Beihang University
+schools: []
 image: /images/people/贾子翟助理教授.png
 aliases:
   - Zidi Jia

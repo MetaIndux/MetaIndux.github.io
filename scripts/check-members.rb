@@ -17,7 +17,7 @@ end
 
 staff = sample_member(site, collection, 'staff', 'role' => 'professor', 'group' => 'researcher', 'description' => '教授', 'order' => 1)
 staff_later = sample_member(site, collection, 'staff-later', 'role' => 'postdoc', 'group' => 'researcher', 'description' => '博士后', 'order' => 9)
-current = sample_member(site, collection, 'current-doctor', 'role' => 'phd', 'group' => 'phd', 'order' => 2, 'enrollment_year' => 2023, 'study_year' => '博士三年级')
+current = sample_member(site, collection, 'current-doctor', 'role' => 'phd', 'group' => 'phd', 'order' => 2, 'enrollment_year' => 2023, 'study_year' => '博士三年级', 'schools' => ['软件学院', '示例学院'])
 earlier = sample_member(site, collection, 'earlier-doctor', 'role' => 'phd', 'group' => 'phd', 'order' => 999, 'enrollment_year' => '2022')
 undated = sample_member(site, collection, 'undated-doctor', 'role' => 'phd', 'group' => 'phd', 'order' => 0)
 master = sample_member(site, collection, 'current-master', 'role' => 'master', 'group' => 'master', 'description' => '硕士研究生', 'enrollment_year' => 2024)
@@ -34,6 +34,7 @@ abort 'Group-only alumni must not retain a student title' unless filters.member_
 abort 'Graduation must not be inferred from intake year' if filters.member_is_alumni({ 'role' => 'phd', 'enrollment_year' => 2000 })
 abort 'Current year must come from the member' unless filters.member_academic_details(current).include?('博士三年级')
 abort 'Old study year must not show after graduation' if filters.member_academic_details(graduate).include?('博士四年级')
+abort 'Empty school information must stay empty' unless filters.member_schools(staff).empty?
 
 sorting_cases = [
   { 'slug' => 'z-same-year', 'enrollment_year' => '2023', 'order' => 0 },
@@ -60,4 +61,7 @@ text = profile.at_css('main').text
 abort 'Graduated profile has incorrect identity' unless text.include?('博士毕业生') && text.include?('2020年入学') && text.include?('2025年毕业')
 abort 'Graduated profile still shows a current study year' if text.include?('博士四年级')
 abort 'Profile must have one name heading' unless profile.css('main h1').size == 1
+abort 'Empty school information must not create labels' unless profile.css('.member-heading .member-school').empty?
+current_profile = Nokogiri::HTML(Jekyll::Renderer.new(site, current).run)
+abort 'A member must be able to display multiple schools' unless current_profile.css('.member-heading .member-school').map(&:text) == ['软件学院', '示例学院']
 puts 'Verified in memory: enrollment sorting, unchanged staff order, year/status display, legacy alumni records, graduates at the bottom and a single-name profile. No sample files were published.'

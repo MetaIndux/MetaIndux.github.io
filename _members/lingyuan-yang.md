@@ -5,6 +5,7 @@ group: phd
 order: 5
 description: 博士研究生
 affiliation: Beihang University
+schools: []
 image: /images/people/杨凌远博士.jpg
 aliases:
   - Lingyuan Yang

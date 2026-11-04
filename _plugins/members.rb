@@ -17,6 +17,10 @@ module Jekyll
       Array(members).select { |member| member_is_alumni(member) }
     end
 
+    def member_schools(member)
+      Array(member_data(member)['schools']).map { |school| school.to_s.strip }.reject(&:empty?).uniq
+    end
+
     def members_by_enrollment(members)
       Array(members).sort_by do |member|
         data = member_data(member)

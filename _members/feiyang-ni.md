@@ -5,6 +5,7 @@ group: master
 order: 5
 description: 硕士研究生
 affiliation: Beihang University
+schools: []
 image: /images/people/倪飞阳硕士.jpg
 aliases:
   - Feiyang Ni

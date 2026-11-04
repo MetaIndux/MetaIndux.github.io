@@ -5,6 +5,7 @@ group: researcher
 order: 5
 description: 助理研究员
 affiliation: Beihang University
+schools: []
 image: /images/people/王海腾助理研究员.jpg
 aliases:
   - Haiteng Wang

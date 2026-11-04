@@ -9,6 +9,7 @@ load File.join(root, '_plugins/members.rb')
 member_filters = Object.new.extend(Jekyll::MemberFilters)
 destination = File.expand_path(ARGV.fetch(0, '_site'), root)
 config = YAML.load_file(File.join(root, '_config.yaml'))
+types = YAML.load_file(File.join(root, '_data/types.yaml'))
 origin = config.fetch('url') + config.fetch('baseurl', '')
 failures = []
 check = ->(condition, message) { failures << message unless condition }
@@ -50,6 +51,19 @@ Dir.glob(File.join(root, '_members', '*.md')).each do |source|
   check.call(locations.include?(expected_url), "#{slug}: absent from sitemap")
   check.call(team.css('a[href]').any? { |link| link['href'] == config.fetch('baseurl', '') + route }, "#{slug}: missing team link")
   check.call(document.css('.member-submission-actions, .member-submission-banner').empty?, "#{slug}: public submission controls must be absent")
+  summary = document.at_css('.member-heading .member-summary')
+  check.call(summary && summary.text.include?(member_filters.member_position(member)) && summary.text.include?(config.fetch('title')), "#{slug}: missing compact identity summary")
+  check.call(member['schools'].is_a?(Array) && member['schools'].all? { |school| school.is_a?(String) && !school.strip.empty? }, "#{slug}: schools must be a list of names or []")
+  expected_schools = member_filters.member_schools(member)
+  check.call(document.css('.member-heading .member-school').map(&:text) == expected_schools, "#{slug}: incorrect profile school labels")
+  team_portrait = team.css('a.portrait[href]').find { |link| link['href'] == config.fetch('baseurl', '') + route }
+  check.call(team_portrait && team_portrait.css('.member-school').map(&:text) == expected_schools, "#{slug}: incorrect team school labels")
+  Array(member['links']).each do |key, value|
+    next if value.nil? || value.to_s.empty?
+    href = types.dig(key, 'link')&.sub('$VALUE', value.to_s) || value.to_s
+    contact = document.css('.member-contacts a').find { |link| link['href'] == href }
+    check.call(contact && contact.text == value.to_s, "#{slug}: sidebar must display the actual #{key} value and correct link")
+  end
 
   structured = document.css('script[type="application/ld+json"]').map { |script| JSON.parse(script.text) }
   profile = structured.find { |item| item['@type'] == 'ProfilePage' }

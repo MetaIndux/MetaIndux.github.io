@@ -5,6 +5,7 @@ group: phd
 order: 16
 description: 博士研究生
 affiliation: Beihang University
+schools: []
 image: /images/photo.jpg
 aliases:
   - Yikang Li

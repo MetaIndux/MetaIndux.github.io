@@ -5,6 +5,7 @@ group: master
 order: 4
 description: 硕士研究生
 affiliation: Beihang University
+schools: []
 image: /images/people/李伟浩硕士.jpg
 aliases:
   - Weihao Li

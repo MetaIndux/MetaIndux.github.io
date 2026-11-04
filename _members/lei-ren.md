@@ -6,6 +6,7 @@ order: 1
 profile_content: true
 description: 二级教授 / 博士生导师
 affiliation: Beihang University
+schools: []
 image: /images/people/任磊教授.png
 aliases:
   - Lei Ren

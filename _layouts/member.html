@@ -4,27 +4,41 @@ layout: default
 
 {% assign profile_position = page | member_position %}
 {% assign profile_academics = page | member_academic_details %}
+{% assign profile_schools = page | member_schools %}
 <div class="member-heading">
-  <p><a href="{{ '/team/' | relative_url }}">团队成员 / Team</a></p>
+  <p class="member-breadcrumb"><a href="{{ '/team/' | relative_url }}">团队成员 / Team</a></p>
   <h1>{{ page.name }}{% if page.aliases.first %} <span lang="en">{{ page.aliases.first }}</span>{% endif %}</h1>
-  <p>{{ profile_position }} · {% if page.affiliation == 'Beihang University' %}北航（北京航空航天大学） / {% endif %}{{ page.affiliation }}</p>
-  {% if profile_academics != '' %}<p class="member-academics">{{ profile_academics | xml_escape }}</p>{% endif %}
-  <p><a href="{{ '/' | relative_url }}">{{ site.title }}</a> 团队成员</p>
+  <p class="member-summary">
+    <span>{{ profile_position | xml_escape }} · {% if page.affiliation == 'Beihang University' %}北航（北京航空航天大学） / {% endif %}<span lang="en">{{ page.affiliation | xml_escape }}</span></span>
+    {% if profile_schools.size > 0 %}<span class="member-schools" aria-label="所属学院">{% for school in profile_schools %}<span class="member-school">{{ school | xml_escape }}</span>{% endfor %}</span>{% endif %}
+    {% if profile_academics != '' %}<span class="member-academics">{{ profile_academics | xml_escape }}</span>{% endif %}
+    <span><a href="{{ '/' | relative_url }}">{{ site.title }}</a> 团队成员</span>
+  </p>
 </div>
 
-{% capture floatcontent %}
+<aside class="member-sidebar" aria-label="个人资料与联系方式">
 {% include portrait.html lookup=page.slug %}
 {% if page.links %}
-<div>
+<dl class="member-contacts">
   {% for link in page.links %}
     {% assign key = link[0] %}
     {% assign value = link[1] %}
-    {% include button.html type=key link=value style="bare" %}<br>
+    {% assign contact_type = site.data.types[key] %}
+    {% assign contact_label = contact_type.text | default: key %}
+    {% assign contact_href = value %}
+    {% if contact_type.link %}
+      {% assign contact_href = contact_type.link | replace: '$VALUE', value %}
+    {% endif %}
+    {% if value and value != '' %}
+    <div class="member-contact">
+      <dt><span aria-hidden="true">{% include icon.html icon=contact_type.icon %}</span>{{ contact_label | xml_escape }}:</dt>
+      <dd><a href="{{ contact_href | xml_escape }}">{{ value | xml_escape }}</a></dd>
+    </div>
+    {% endif %}
   {% endfor %}
-</div>
+</dl>
 {% endif %}
-{% endcapture %}
-{% include float.html content=floatcontent %}
+</aside>
 
 {% assign biography = content | strip %}
 {% if biography != '' %}
@@ -46,7 +60,7 @@ layout: default
   <ol>
     {% for publication in member_publications limit: 5 %}
     <li>
-      {% include publication-link.html publication=publication %}<br>
+      <strong>{% include publication-link.html publication=publication %}</strong>.
       <span lang="en">{{ publication.authors | join: ', ' | xml_escape }}. {{ publication.publisher | default: publication.venue | xml_escape }}.</span>
       {{ publication.year }}{% if publication.type == 'Preprint' %} · 预印本 / Preprint{% endif %}
     </li>

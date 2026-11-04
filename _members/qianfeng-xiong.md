@@ -5,6 +5,7 @@ group: phd
 order: 8
 description: 博士研究生
 affiliation: Beihang University
+schools: []
 image: /images/people/熊前锋博士.jpg
 aliases:
   - Qianfeng Xiong

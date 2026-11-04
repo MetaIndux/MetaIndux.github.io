@@ -5,6 +5,7 @@ group: researcher
 order: 7
 description: 助理研究员
 affiliation: Beihang University
+schools: []
 image: /images/people/李世祥助理研究员.jpg
 aliases:
   - Shixiang Li
