@@ -13,7 +13,7 @@
 
 ## 新增成员
 
-1. 复制 [example.md](example.md) 的全部内容。
+1. 打开 [example.md](example.md)，先看字段的可选值和参考例子，再复制“完整成员文件样例”代码块内部的全部内容。内容应从第一行 `---` 开始；不要复制代码围栏、说明表或下方的配置片段。
 2. 在 [`_members` 目录](https://github.com/MetaIndux/MetaIndux.github.io/tree/main/_members)使用 **Add file → Create new file**，新建 `<slug>.md`，例如以本人姓名的英文拼写组成文件名。请先确认没有重名文件，并与维护者确定稳定的文件名和展示顺序。
 3. 粘贴样例，替换姓名、身份、英文署名、培养信息和正文，删除不适用的占位内容。新成员文件应放在 `_members/` 下，**不要放进 `_members/templates/`**，也不要直接把 `example.md` 改成个人资料。
 
